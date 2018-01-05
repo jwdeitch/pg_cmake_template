@@ -1,3 +1,7 @@
+# Apache 2 Licensed
+# Code modified from:
+# TimescaleDB (https://www.timescale.com/)
+
 set(CMAKE_C_FLAGS_DEBUG "-DUSE_ASSERT_CHECKING=1")
 
 if (UNIX)

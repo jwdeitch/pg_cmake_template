@@ -1,3 +1,7 @@
+# Apache 2 Licensed
+# Code modified from:
+# TimescaleDB (https://www.timescale.com/)
+
 cmake_minimum_required(VERSION 3.4)
 
 set(PROJECT_NAME DemoPGExtension)
