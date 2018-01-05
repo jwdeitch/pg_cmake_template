@@ -1,12 +1,17 @@
 #include "postgres.h"
 #include "fmgr.h"
 #include "utils/builtins.h"
-#include "utils/guc.h"
+#include "guc.h"
 
 PG_MODULE_MAGIC;
 
 PG_FUNCTION_INFO_V1(base36_encode);
 
+void
+_PG_init(void) {
+	_guc_init();
+	elog(INFO, "loaded DemoPGExtension extension");
+}
 
 Datum
 base36_encode(PG_FUNCTION_ARGS) {
@@ -17,7 +22,7 @@ base36_encode(PG_FUNCTION_ARGS) {
 						errcode(ERRCODE_NUMERIC_VALUE_OUT_OF_RANGE),
 								errmsg("negative values are not allowed"),
 								errdetail("value %d is negative", arg),
-								errhint("make it positive")
+								errhint("should be positive")
 				)
 		);
 

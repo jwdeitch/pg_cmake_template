@@ -30,10 +30,12 @@ endif (WIN32)
 
 set(HEADERS
         extension.h
+        guc.h
         )
 
 set(SOURCES
         extension.c
+        guc.c
         )
 
 set(GITCOMMIT_H ${CMAKE_CURRENT_BINARY_DIR}/gitcommit.h)
