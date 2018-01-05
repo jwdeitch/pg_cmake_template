@@ -1,0 +1,6 @@
+comment = 'Sample Postgres Extension - pg_cmake'
+default_version = '0.0.1'
+module_pathname = '$libdir/samplepgextension'
+#extension cannot be relocatable once installed because it uses multiple schemas and that is forbidden by PG.
+#(though this extension is relocatable during installation).
+relocatable = false
