@@ -158,6 +158,7 @@ add_subdirectory(sql)
 add_subdirectory(src)
 
 set(EXT_CONTROL_FILE ${PROJECT_NAME}.control)
+configure_file(${EXT_CONTROL_FILE} ${EXT_CONTROL_FILE})
 
 install(
         FILES ${CMAKE_CURRENT_BINARY_DIR}/${EXT_CONTROL_FILE}

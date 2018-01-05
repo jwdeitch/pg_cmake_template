@@ -1,11 +1,4 @@
-#include "postgres.h"
-#include "fmgr.h"
-#include "utils/builtins.h"
-#include "guc.h"
-
-PG_MODULE_MAGIC;
-
-PG_FUNCTION_INFO_V1(get_welcome_message);
+#include "extension.h"
 
 void
 _PG_init(void) {
@@ -13,9 +6,13 @@ _PG_init(void) {
 	elog(INFO, "loaded DemoPGExtension extension");
 }
 
+PG_FUNCTION_INFO_V1(get_welcome_message);
+
 Datum
 get_welcome_message(PG_FUNCTION_ARGS) {
 	int32 arg = PG_GETARG_INT32(0);
+	int sprintf_output_code = 0;
+
 	if (arg < 0)
 		ereport(ERROR,
 				(
@@ -32,8 +29,14 @@ get_welcome_message(PG_FUNCTION_ARGS) {
 	if (message_txt == NULL)
 		message_txt = "hello";
 
-	// You've entered
-	char *result = sprintf("%s: %i", message_txt, arg);
+	char *buffer = palloc0(sizeof(message_txt) + sizeof(arg) + 1);
+	if ((sprintf_output_code = (sprintf(buffer, "%s: %i", message_txt, arg))) < 0)
+		ereport(ERROR,
+				(
+						errcode(ERRCODE_OUT_OF_MEMORY),
+								errmsg("sprintf error: %i", sprintf_output_code)
+				)
+		);
 
-	PG_RETURN_TEXT_P(cstring_to_text(&result));
+	PG_RETURN_TEXT_P(cstring_to_text(buffer));
 }

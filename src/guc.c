@@ -1,6 +1,6 @@
 #include "guc.h"
 
-void _guc_init() {
+void _guc_init(void) {
 	DefineCustomStringVariable("demopgextension.message_txt",
 							   "message text to this sample guc",
 							   NULL,
