@@ -5,7 +5,7 @@
 
 PG_MODULE_MAGIC;
 
-PG_FUNCTION_INFO_V1(base36_encode);
+PG_FUNCTION_INFO_V1(get_welcome_message);
 
 void
 _PG_init(void) {
@@ -14,7 +14,7 @@ _PG_init(void) {
 }
 
 Datum
-base36_encode(PG_FUNCTION_ARGS) {
+get_welcome_message(PG_FUNCTION_ARGS) {
 	int32 arg = PG_GETARG_INT32(0);
 	if (arg < 0)
 		ereport(ERROR,
