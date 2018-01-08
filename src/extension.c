@@ -2,8 +2,8 @@
 
 void
 _PG_init(void) {
+	elog(INFO, "loading DemoPGExtension extension....");
 	_guc_init();
-	elog(INFO, "loaded DemoPGExtension extension");
 }
 
 PG_FUNCTION_INFO_V1(get_welcome_message);

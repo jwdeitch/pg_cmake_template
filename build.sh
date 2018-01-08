@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # Modified from TimescaleDB Source
 # (https://www.timescale.com)
 
@@ -36,6 +38,9 @@ mkdir -p ${BUILD_DIR} && \
 
 echo -n "build system initialized in ${BUILD_DIR}. To compile, doing:"
 echo -e "\033[1mcd ${BUILD_DIR} && make\033[0m"
+
+make install
+cd ..
 
 #cd ./$BUILD_DIR/ && make && cd ..
 
