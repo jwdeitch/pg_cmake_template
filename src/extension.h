@@ -7,5 +7,5 @@
 PG_MODULE_MAGIC;
 #endif
 
-void _PG_init(void);
+extern void _PG_init(void);
 Datum get_welcome_message(PG_FUNCTION_ARGS);

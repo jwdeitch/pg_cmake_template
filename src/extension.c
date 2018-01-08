@@ -2,7 +2,8 @@
 
 void
 _PG_init(void) {
-	elog(INFO, "loading DemoPGExtension extension....");
+	elog(DEBUG1, "loading DemoPGExtension extension....");
+	
 	_guc_init();
 }
 
@@ -10,6 +11,8 @@ PG_FUNCTION_INFO_V1(get_welcome_message);
 
 Datum
 get_welcome_message(PG_FUNCTION_ARGS) {
+	elog(DEBUG1, "Triggered get_welcome_message func");
+	
 	int32 arg = PG_GETARG_INT32(0);
 	int sprintf_output_code = 0;
 
